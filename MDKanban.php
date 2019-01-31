@@ -8,17 +8,21 @@
 *
 * @MDKanban
 * Plugin Name:       MDKanban
-* Plugin URI:        https://podz.io/agilepress/
-* Description:       AgilePress brings Agile product/project management to WordPress.
-* Version:           1.608.2
-* Author:            KMD Enterprises, LLC
-* Author URI:        https://kmd.enterprises/
-* License:           GPL-2.0+
-* License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
-* Text Domain:       agilepress
-* Domain Path:       /languages
+* Plugin URI:        https://github.com/009Benny/MDKanban
+* Description:       Plugin de Administracion Kanban para Wordpress
+* Version:           1.0
+* Author:             © GRUPO MILENIO
+* Author URI:        http://www.milenio.com/
+* Text Domain:       MDKanban
 */
 
+require_once plugin_dir_path( __FILE__ ) . '/Database/taskDB.php';
+require_once plugin_dir_path( __FILE__ ) . '/Shortcodes/task.php';
+
+register_activation_hook( __FILE__, 'md_create_tables' );
+// register_deactivation_hook(__FILE__, 'md_remove_tables' );
+
+add_shortcode('create_task', 'MDFormTask');
 
 
 
