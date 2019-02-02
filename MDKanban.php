@@ -17,12 +17,12 @@
 */
 
 require_once plugin_dir_path( __FILE__ ) . '/Database/taskDB.php';
-require_once plugin_dir_path( __FILE__ ) . '/Shortcodes/task.php';
+// require_once plugin_dir_path( __FILE__ ) . '/Shortcodes/task.php';
 
 register_activation_hook( __FILE__, 'md_create_tables' );
 // register_deactivation_hook(__FILE__, 'md_remove_tables' );
 
-add_shortcode('create_task', 'MDFormTask');
+// add_shortcode('create_task', 'MDFormTask');
 
 
 
