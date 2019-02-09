@@ -3,7 +3,9 @@ const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 
 var paths = [
-  'css/main.scss'
+  'css/main.scss',
+  'css/Modules/**/*.scss',
+  'css/Modules/*.scss',
 ];
 
 gulp.task('sass', function(){

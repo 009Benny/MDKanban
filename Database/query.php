@@ -3,18 +3,34 @@
 /*
 * Consulta de Campos de la tabla
 */
-function get_columns_task($columns, $table_name){
-  if(is_array($columns)){
-    $consults = '';
-    foreach ($columns as $columns) {
-      if(!empty($consults)){
-        $cossults = $consults.', ';
+if(!function_exists('get_columns_task')){
+  function get_columns_task($columns, $table_name){
+    global $wpdb;
+    $result = '';
+    if(!empty($columns) && !empty($table_name)){
+      $result = $columns;
+      if(is_array($columns)){
+        $consults = '';
+        foreach ($columns as $key => $value) {
+          if(!empty($consults)){
+            $consults = $consults.', ';
+          }
+          // $consults = $consults.'`'.$value.'`';
+          $consults = $consults.$value;
+        }
+      }else{
+        $consults = $columns;
       }
-      $cossults = $consults.$columns;
+      $sql = 'SELECT '.$consults.' FROM '.$table_name;
+      // $sql = "SELECT * FROM `".$table_name."`";
+      $result = $wpdb->get_results($sql);
+      print_r($result);
     }
+    // $result = $sql;
+    return $result;
   }
-  $query = 'SELECT '.$columns.' FROM '.$table_name;
 }
+
 
 
 ?>
