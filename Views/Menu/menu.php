@@ -2,18 +2,22 @@
 /* MENU MDKANBAN PLUGIN */
 function MDKanban_admin_menu()
 {
-  //add_menu_page(page_title,menu_title,capability,menu_slug, function, icon_url,position)
-  add_menu_page('MDMenuKanban','Milenio Tareas','manage_options','MDKanbanPrincipal','MDKanban_admin_menu_function','dashicons-sticky');
-  // add_submenu_page('MDKanban_plugin','MDKanban Task','Task','manage_options','MDkanban_task_submenu','MDKanban_task_function');
-  // add_submenu_page('MDKanban_plugin','MDKanban Users','Users','manage_options','MDkanban_users_submenu','MDKanban_users_function');
-  // add_submenu_page('MDKanban_plugin','MDKanban Roles','Roles','manage_options','MDKanban_roles_submenu','MDKanban_roles_function');
-  // add_submenu_page('MDKanban_plugin','MDKanban Status','Status','manage_options','MDkanban_status_submenu','MDKanban_status_function');
-  // add_submenu_page('MDKanban_plugin','MDKanban Frecuency','Frecuency','manage_options','MDkanban_frecuency_submenu','MDKanban_frecuency_function');
+  //add_menu_page(page_title,menu_title,          capability,     menu_slug, function,       icon_url,position)
+  add_menu_page('MDMenuKanban','Milenio Tareas','manage_options','MDKanban','MDKanbanIndex','dashicons-sticky');
+  add_submenu_page('MDKanban','KTask','Tareas','manage_options','MDKanbanTask','MDAdminTables');
+  add_submenu_page('MDKanban','KUser','Usuarios','manage_options','MDKanbanUser','MDAdminTables');
+  add_submenu_page('MDKanban','KRole','Roles','manage_options','MDKanbanRole','MDAdminTables');
+  add_submenu_page('MDKanban','KFrecuency','Frecuencias','manage_options','MDKanbanFrecuency','MDAdminTables');
+  add_submenu_page('MDKanban','KStatus','Status','manage_options','MDKanbanStatus','MDAdminTables');
 }
 
 //Pagina Inicial
 function MDKanbanIndex(){
 
+}
+
+function MDAdminTables(){
+echo "string";
 }
 
 function MDKanban_admin_menu_function(){
