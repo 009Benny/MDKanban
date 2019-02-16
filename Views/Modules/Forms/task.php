@@ -18,14 +18,14 @@ function MDFormTask(){
   array_push($inputs, AddLabel('reference', 'Link del proyecto(opcional)'));//name, placeholder
   array_push($inputs, InputText('reference', 'htt://example.com'));//name, placeholder
   $status = AddLabel('status', 'Status: ').SelectStatus();
-  $save = ButtonSubmitForm('Guardar cambios', 'Guardar');
+  $save = ButtonId('Guardar cambios', 'task');
   array_push($inputs, TwoColumns($status, $save));
   foreach ($inputs as $input) {
     $html = $html.$input;
   }
   $html = FormContainer($html, 'md_task', '');
   $html = CenterContainer($html);
-  $html = ModalContainer($html);
+  $html = addDiv('MDKanban', $html);
   return $html;
 }
 

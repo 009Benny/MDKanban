@@ -1,4 +1,8 @@
 <?php
+  function addDiv($class='', $content=''){
+    return '<div class="'.$class.'">'.$content.'</div>';
+  }
+
   function AddLabel($name, $text){
     return '<label for="'.$name.'">'.$text.'</label>';
   }
@@ -10,12 +14,40 @@
     return $html;
   }
 
+  function ThreeColumns($leftColumn, $centerColumn,$rightColumn){
+    $leftColumn = '<div class="left-column">'.$leftColumn.'</div>';
+    $centerColumn = '<div class="center-column">'.$centerColumn.'</div>';
+    $rightColumn = '<div class="right-column">'.$rightColumn.'</div>';
+    $html = '<div class="three-columns">'.$leftColumn.$centerColumn.$rightColumn.'</div>';
+    return $html;
+  }
+
   function CenterContainer($content){
     return '<div class="center-container">'.$content.'</div>';
   }
 
-  function FormContainer($content, $name, $actionRute = ''){
-    return '<form class="'.$name.'" action="'.$actionRute.'" method="post">'.$content.'</form>';
+  function FormContainer($content, $id, $name, $actionRute = 'return false'){
+    return '<form id="'.$id.'" class="'.$name.'" action="'.$actionRute.'" onsubmit="return false">'.$content.'</form>';
+  }
+
+  function TableContainer($content, $class='', $id=''){
+    return '<table id='.$id.' class='.$class.'>'.$content.'</table>';
+  }
+
+  function RowContainer($content, $class=''){
+    return '<tr class='.$class.'>'.$content.'</tr>';
+  }
+  function ColumnHeaderContainer($content, $class=''){
+    return '<th class='.$class.'>'.$content.'</th>';
+  }
+  function ColumnContainer($content, $class=''){
+    return '<td class='.$class.'>'.$content.'</td>';
+  }
+
+  function ButtonId($value, $id, $class = ''){
+    $div = '<div class="MDbutton">'.$value.'</div>';
+    $html ='<a href="#" id="'.$id.'" class="link-button">'.$div.'</a>';
+    return $html;
   }
 
   function ButtonSubmitForm($value, $class=''){
@@ -99,8 +131,15 @@
     return $html;
   }
 
-  function ModalContainer($content){
-    return '<div class="modal-container"><div class="modal">'.$content.'</div></div>';
+  function ModalContainer(){
+    $modalFade = '<div class="window-fade"></div>';
+    $modal = '<div class="center-modal"><div class="MDModal"></div></div>';
+    return $modalFade.$modal;
   }
+
+  /* CONTENEDORES NAYELI 11/FEB */
+
+
+  /* FIN CONTENEDOR  NAYELI 11/FEB*/
 
 ?>

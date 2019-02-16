@@ -10,30 +10,27 @@ function MDFormOptions($atts, $content = null){
   $atts);
   $html = '';
   $html = CreateTableOptions($args['type']);
+  $html = addDiv('MDKanban', $html);
   return $html;
 }
 
 function CreateTableOptions($type){
   $inputs = array();
+  $rows = '';
   $html = '';
-  $columns = array('id', 'name');
   $results = '';
-  $results = get_columns_task($columns, 'md_user');
-  // foreach ($results as $key => $value) {
-  //   array_push($inputs, '<h1>'.$value.'</h1></br>');
-  // }
-  if(is_array($results)){
-    // foreach ($results as $key => $value) {
-    //   $val = (string)$value;
-    //   $html = $html.$val;
-    // }
-  }else {
-    $html = $results;
+  $columns = array('id', 'name');
+  $row = ColumnHeaderContainer('ID').ColumnHeaderContainer('Nombre');
+  $rows = $rows.RowContainer($row);
+  $results = sql_get_columns($columns, 'md_'.$type);
+  foreach ($results as $key => $value) {
+    $row = ColumnContainer($value->id).ColumnContainer($value->name);
+    $rows = $rows.RowContainer($row);
   }
-  // $html = FormContainer($html, 'md_task', '');
-  // $html = CenterContainer($html);
+  $table = TableContainer($rows, 'table-container', 'table-'.$type);
+  $html = $table;
+  // $html = CenterContainer($table);
   // $html = ModalContainer($html);
-  // $html = '<h1>'.count($results).'</h1>';
   return $html;
 }
 
